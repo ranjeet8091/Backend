@@ -1,0 +1,14 @@
+[
+    {
+        "user":"abc",
+        "pass":"abc",
+        "roll":"admin",
+        "code":"1234"
+    },
+    {
+        "user":"abcd",
+        "pass":"abcd",
+        "roll":"author",
+        "code":"12345"
+    }
+]

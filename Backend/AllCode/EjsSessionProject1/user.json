@@ -1,0 +1,14 @@
+[
+    {
+        "user":"abc",
+        "pass":"abc",
+        "roll":"admin",
+        "postid":1234
+    },
+    {
+        "user":"abcd",
+        "pass":"abcd",
+        "roll":"author",
+        "postid":12345
+    }
+]

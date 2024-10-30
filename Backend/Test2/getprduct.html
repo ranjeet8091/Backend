@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        fetch("/allProduct").then(res=>{
+            return res.json();
+        }).then(data=>{
+            console.log(data);
+            function handleProductClick(event) {
+                                  try {
+                                      event.target.style.backgroundColor = 'yellow';
+                                  } catch (error) {
+                                      console.error('Error handling product click:', error);
+                                      throw error;
+                                  }
+                              }
+                          
+                              const products = document.querySelectorAll('.product');
+                              products.forEach(product => {
+                                  product.addEventListener('click', handleProductClick);
+                              });
+        }).catch(e=>{
+            console.log(e);
+        })
+
+        
+    </script>
+</body>
+</html>

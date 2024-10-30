@@ -1,0 +1,10 @@
+const url=require("url");
+const address="https://www.flipkart.com/viewcart?exploreMode=true&preference=FLIPKART";
+var q=url.parse(address,true);
+// console.log(q.host);
+// console.log(q.pathname);
+// console.log(q.port);
+// console.log(q.search);
+//console.log(q.href);
+//console.log(q.protocol);
+//console.log(q.hash);

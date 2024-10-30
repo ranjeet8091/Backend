@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCQs Quiz</title>
+  
+</head>
+<body>
+
+<div id="quiz-container">
+  <h2 class="question" id="question"></h2>
+  <ul class="options" id="options"></ul>
+  <button onclick="nextQuestion()">Next</button>
+</div>
+
+<script>
+  // Define your MCQs data
+  const mcqs = [
+    {
+      question: "What is the capital of France?",
+      options: ["Berlin", "Madrid", "Paris", "Rome"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
+      correctAnswer: "Mars"
+    },
+    {
+      question: "What is the largest mammal on Earth?",
+      options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+      correctAnswer: "Blue Whale"
+    },
+    {
+      question: "What is the second name of Ranjeet?",
+      options:["Ranju","Raghu","Ramu","Ranji"],
+      correctAnswer:"Ranju"
+    }
+  ];
+
+  let currentQuestionIndex = -1;
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  function loadQuestion(){
+    if (currentQuestionIndex < mcqs.length - 1) {
+      currentQuestionIndex++;
+      const currentQuestion = mcqs[currentQuestionIndex];
+      document.getElementById("question").textContent = currentQuestion.question;
+      const shuffledOptions = shuffle(currentQuestion.options.slice());
+      const optionsList = document.getElementById("options");
+      optionsList.innerHTML = "";
+      shuffledOptions.forEach((option, index) => {
+        const li = document.createElement("li");
+        li.classList.add("option");
+        li.textContent = option;
+        li.addEventListener("click", () => checkAnswer(option));
+        optionsList.appendChild(li);
+      });
+    } else {
+      alert("Quiz completed!");
+    }
+  }
+
+  function checkAnswer(selectedOption) {
+    const currentQuestion = mcqs[currentQuestionIndex];
+    if (selectedOption === currentQuestion.correctAnswer) {
+      alert("Correct!");
+    } else {
+      alert(`Incorrect! The correct answer is ${currentQuestion.correctAnswer}`);
+    }
+    loadQuestion();
+  }
+
+  function nextQuestion() {
+    loadQuestion();
+  }
+  window.onload = loadQuestion;
+</script>
+
+</body>
+</html>

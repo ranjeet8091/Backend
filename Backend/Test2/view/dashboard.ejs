@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Products</title>
+</head>
+<body>
+    Products Dashboard page
+    <ul>
+        <%arr.forEach((element)=>{%>
+            <div id="<%=element.id%>">
+            <img src="<%=element.image%>">
+            <h2><%=element.name%></h2>
+            <h3><%=element.price%></h3>
+        </div>
+        <%})%>
+    </ul>
+</body>
+</html>

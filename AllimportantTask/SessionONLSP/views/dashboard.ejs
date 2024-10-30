@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <% if (Roll === "admin") { %>
+        <h1>You are admin</h1>
+        <h2><a href="http://localhost:3000/signup">Add User</a></h2>
+        <% if (pf) { %>
+          <img src="/<%= pf %>" alt="Profile Picture">
+      <% } else { %>
+          <p>No profile picture uploaded.</p>
+      <% } %>
+    <% } else { %>
+        <h1>You are on the general page</h1>
+        <img src="<%=pf%>" alt="image not found">
+    <% } %>
+</body>
+</html>

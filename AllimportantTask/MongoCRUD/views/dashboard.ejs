@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Product details</h1>
+    <% if(arr) {%>
+        <% arr.forEach(ele=>{ %>
+            <h2 style="color: blue;">Product Name:<%=ele.pname%></h2>
+            <h2>Rate :<%=ele.price%></h2>
+            <img src="<%=ele.file%>" height="400px" width="400px" alt="page not found">
+    
+      <% }) %>
+
+    <%}%>   
+</body> 
+</html>

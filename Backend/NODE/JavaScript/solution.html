@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+</head>
+
+<body>
+    <div id="quiz">
+        <button onclick="start()">start quiz</button>
+    </div>
+    <script>
+        var quizContainer = document.getElementById("quiz");
+        var currentIndex = 0;
+        var correct = 0;
+        var questions = [
+            {
+                ques: 'What is a correct syntax to output "Hello World" in Java?',
+                mcq: [
+                    'System.out.println("Hello World")',
+                    'echo("Hello World")',
+                    'cout<<"Hello World',
+                    'print("Hello World")',
+                ],
+                ans: 'System.out.println("Hello World")',
+            },
+            {
+                ques: 'How do you create a variable with the numeric value 5?',
+                mcq: [
+                    'float x=5',
+                    'num x=5',
+                    'int x=5',
+                    'x=5',
+                ],
+                ans: 'int x=5',
+            },
+            {
+                ques: 'How do you create a variable with the numeric value 5?',
+                mcq: [
+                    'float x=5',
+                    'num x=5',
+                    'int x=5',
+                    'x=5',
+                ],
+                ans: 'int x=5',
+            },
+        ]
+
+        function start() {
+            quizContainer.innerHTML = "";
+            makeElement();
+        }
+        function makeElement() {
+            var h1 = document.createElement("h1");
+            h1.innerHTML = currentIndex + 1 + "." + questions[currentIndex].ques;
+            quizContainer.appendChild(h1);
+            questions[currentIndex].mcq.forEach((element, index) => {
+                var input = document.createElement("input");
+                input.setAttribute("type", "radio");
+                input.setAttribute("name", "quiz");
+                input.setAttribute("id", index);
+                input.value = element;
+                var label = document.createElement("label");
+                label.innerHTML = element;
+                var br = document.createElement("br");
+                quizContainer.appendChild(input);
+                quizContainer.appendChild(label);
+                quizContainer.appendChild(br);
+            })
+            var button = document.createElement("button");
+            button.innerHTML = "submit";
+            button.addEventListener("click", next);
+            quizContainer.appendChild(button);
+        }
+
+        function next() {
+            for (var i = 0; i < questions[currentIndex].mcq.length; i++) {
+                var data = document.getElementById(i);
+                if (data.checked&&data.value==questions[currentIndex].ans) {
+                   correct++;
+                }
+            }
+            currentIndex++;
+            if(currentIndex>=questions.length) end();
+            else start();
+        }
+
+        function end(){
+            quizContainer.innerHTML = "";
+            var h1=document.createElement("h1");
+             h1.innerHTML="score";
+            var h3=document.createElement("h3");
+             h3.innerHTML=correct;
+             var button=document.createElement("button");
+             button.innerHTML="start quiz";
+             button.setAttribute("onclick","start()");
+             currentIndex = 0;
+             correct = 0;
+             quizContainer.appendChild(h1);
+             quizContainer.appendChild(h3);
+             quizContainer.appendChild(button);
+        }
+    </script>
+</body>
+
+</html>

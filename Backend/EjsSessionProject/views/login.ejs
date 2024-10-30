@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: rgb(239, 247, 250);
+    }
+    #login{
+     height: 400px;
+     width: 300px;
+     border: 3px solid green;
+     display: block;
+     margin: auto;
+     padding: 20px;
+    
+    }
+    div{
+        background-color: rgb(227, 227, 233);
+        padding: 20px;
+        width: 350px;
+        border: 2px solid black;
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+        margin-top: 170px;
+        text-align: center;
+      
+
+    }
+    div h1{
+        font-size: 48px;
+    }
+    div a{
+        text-decoration: none;
+        font-size: 30px;
+    }
+</style>
+<body>
+ <div>
+
+    <form action="http://localhost:3000/CheckCred" method="post" >
+        <h1>LOGIN</h1>
+        <label for="uid">User name:</label>
+       <input type="text" id="uid" name="user"> <br><br>
+    
+       <label for="pass">Password</label>
+       <input type="password" id="pass" name="pass">
+       <br><br>
+       <button id="btn">Submit</button> <br><br>
+    
+       </form> 
+       
+ </div>
+
+</body>
+</html>

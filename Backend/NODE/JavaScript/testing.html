@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <div id="quiz">
+        <h1 style="color: blueviolet;margin-left: 300px;">Improve your skills</h1>
+        <button onclick="start()" style="margin-left: 300px;">Start Quiz</button>
+    </div>
+
+
+    <script>
+        var question=[
+            {ques:" How many Bones in our body",
+            option:[205,204,203,206],
+            ans:"206"},
+
+            {ques:" How many eyes in our body",
+            option:[5,4,2,3],
+            ans:"206"},
+
+            {ques:" How many ear in our body",
+            option:[5,2,3,6],
+            ans:"206"},
+
+            {ques:" How many Hand in our body",
+            option:[9,4,2,0],
+            ans:"206"},
+
+            {ques:" How many tongue in our body",
+            option:[1,4,3,2],
+            ans:"206"},
+
+        ]
+        var body=document.getElementById("quiz");
+        currentindex=0;
+        correct=0;
+         function start(){
+            body.innerHTML=" ";
+            sagar();
+         }
+        function sagar(){
+            let h1=document.createElement("h1");
+            h1.innerHTML=currentindex+1+"." + question[currentindex].ques;
+            body.append(h1);
+
+            question[currentindex].option.forEach((element,index)=>{
+                let input=document.createElement("input");
+                input.setAttribute("type","radio");
+                input.setAttribute("name","quiz");
+                input.setAttribute("id",index);
+                 
+                let label=document.createElement("label");
+                label.innerHTML=element;
+
+                let br=document.createElement("br");
+                body.appendChild(br);
+                body.appendChild(input);
+                body.appendChild(label);
+                 })
+
+                 var button = document.createElement("button");
+            button.innerHTML = "submit";
+            button.addEventListener("click", next);
+            body.appendChild(button);
+              
+                 button.addEventListener("click",next);
+                 body.appendChild(button);
+                
+            }
+
+            function next() {
+            for (var i = 0; i < questions[currentindex].option.length; i++) {
+                var data = document.getElementById(i);
+                if (data.checked&&data.value==questions[currentindex].ans) {
+                   correct++;
+                }
+            }
+            currentindex++;
+            if(currentindex>=questions.length) end();
+            else start();
+        }
+            function end(){
+            quizContainer.innerHTML = "";
+            var h1=document.createElement("h1");
+             h1.innerHTML="score";
+            var h3=document.createElement("h3");
+             h3.innerHTML=correct;
+             var button=document.createElement("button");
+             button.innerHTML="start quiz";
+             button.setAttribute("onclick","start()");
+             currentIndex = 0;
+             correct = 0;
+             quizContainer.appendChild(h1);
+             quizContainer.appendChild(h3);
+             quizContainer.appendChild(button);
+        }
+            
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #cdb4b4;
+}
+
+/* Header styles */
+/* Admin Page heading styles */
+h1 {
+    text-align: center;
+    margin-top: 50px; /* Adjust top margin as needed */
+    font-size: 32px;
+    font-family: Arial, sans-serif; /* Example font-family */
+    font-weight: 700; /* Example font-weight */
+    font-style: italic; /* Example font-style */
+    text-transform: uppercase; /* Example text-transform */
+    color: #070606;
+}
+
+/* logout button */
+/* Logout button styles */
+#logout {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#logout a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#logout a:hover {
+    background-color: #0056b3;
+}
+
+
+/* Button styles */
+button, a.button {
+    display: block;
+    margin: 20px auto;
+    background-color: #7da3c9;
+    color: #f2e8e8;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+button:hover, a.button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* List styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 80%;
+}
+
+/* List item styles */
+li {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Image styles */
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Title styles */
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Article styles */
+h3 {
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+}
+
+/* Delete button styles */
+button[type="submit"] {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+    </style>
+</head>
+<body>
+   
+    <% if (Roll === "Admin") { %>
+        <h1>Admin Page</h1>
+        <button> <a href="http://localhost:3000/showaddform">Add Post</a></button>
+        <button> <a href="http://localhost:3000/addAuthor">Add Author</a></button>
+        <button id="logout"> <a href="http://localhost:3000/logout">LogOut</a></button>
+        <ul>
+            <% arr.forEach((element) => { %>
+                <li>
+                    <img src="<%= element.image %>" style="max-width: 100px; max-height: 100px;">
+                    <h2><%= element.title %></h2>
+                    <h3><%= element.article %></h3>
+                    <form action="http://localhost:3000/deletePost" method="post">
+                        <input type="hidden" name="postId" value="<%= element._id %>">
+                        <button type="submit">Delete Post</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <h1>Author Page</h1>
+        <a href="http://localhost:3000/showaddform">Add Post</a>
+        <button id="logout"> <a href="http://localhost:3000/logout">LogOut</a></button>
+       
+    <% } %>
+    
+</body>
+</html>

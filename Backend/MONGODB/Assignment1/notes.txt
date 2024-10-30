@@ -1,0 +1,178 @@
+
+PS C:\Users\tiwar\OneDrive\Desktop\Backend> mongosh
+Current Mongosh Log ID: 6618d00291778a66eaa386a4
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+Using MongoDB:          7.0.6
+Using Mongosh:          2.1.5
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   2024-04-12T11:21:18.224+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin    40.00 KiB
+config   72.00 KiB
+local   128.00 KiB
+test     72.00 KiB
+test> use sectionV
+switched to db sectionV
+sectionV> db.user.find({});
+
+sectionV> db.user.insertOne({name:"Ranjeet"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6618d0a591778a66eaa386a5')
+}
+sectionV> db.user.find({});
+[ { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'Ranjeet' } ]
+sectionV> db.user.insertMany({name:"Ranjeet"})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+sectionV> db.user.insertMany([{name:"Ranjeet"},name:"sagar"])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:41)
+
+> 1 | db.user.insertMany([{name:"Ranjeet"},name:"sagar"])
+    |                                          ^
+  2 |
+
+sectionV> db.user.find({});
+[ { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'Ranjeet' } ]
+sectionV> db.user.insertMany([{name:"Ranjeet"},{name:"sagar"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6618d16391778a66eaa386a6'),
+    '1': ObjectId('6618d16391778a66eaa386a7')
+  }
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'Ranjeet' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'Ranjeet' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'sagar' }
+]
+sectionV> db.user.findOne({name:"sagar"})
+{ _id: ObjectId('6618d16391778a66eaa386a7'), name: 'sagar' }
+sectionV> db.user.update({name:"sagar"},{$set:{name:"vievk"}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'Ranjeet' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'Ranjeet' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' }
+]
+sectionV> db.user.updateMany({name:"Ranjeet"},{$set:{name:"vievk"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' }
+]
+sectionV> db.user.updateOne({name:"Vivek"},{$set:{name:"Ranjeet"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' }
+]
+sectionV> db.user.insertMany([{name:"Ranjeet"},name:"sagar"])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:41)
+
+> 1 | db.user.insertMany([{name:"Ranjeet"},name:"sagar"])
+    |                                          ^
+  2 |
+
+sectionV> db.user.update({name:"sagar"},{$set:{name:"vievk"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' }
+]
+sectionV> db.user.insertMany([{name:"Ranjeet"},{name:"sagar"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6618d28191778a66eaa386a8'),
+    '1': ObjectId('6618d28191778a66eaa386a9')
+  }
+}
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' },
+  { _id: ObjectId('6618d28191778a66eaa386a8'), name: 'Ranjeet' },
+  { _id: ObjectId('6618d28191778a66eaa386a9'), name: 'sagar' }
+]
+sectionV> db.user.delete({name:"Ranjeet"})
+TypeError: db.user.delete is not a function
+sectionV> db.user.deleteOne({name:"Ranjeet"})
+{ acknowledged: true, deletedCount: 1 }
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' },
+  { _id: ObjectId('6618d28191778a66eaa386a9'), name: 'sagar' }
+]
+sectionV> db.user.deleteMany({name:"vivek"})
+{ acknowledged: true, deletedCount: 0 }
+sectionV> db.user.find({});
+[
+  { _id: ObjectId('6618d0a591778a66eaa386a5'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a6'), name: 'vievk' },
+  { _id: ObjectId('6618d16391778a66eaa386a7'), name: 'vievk' },
+  { _id: ObjectId('6618d28191778a66eaa386a9'), name: 'sagar' }
+]
+sectionV> db.user.deleteMany({name:"vievk"})
+{ acknowledged: true, deletedCount: 3 }
+sectionV> db.user.find({});
+[ { _id: ObjectId('6618d28191778a66eaa386a9'), name: 'sagar' } ]
+sectionV>
+
+
+
+
+
+
+
+
+////$lt:less than
+///$lte:less than equal to
+///$gt:greater then
+//$gte:greater than and equal to
+
+///////////db.product.find({price:{$gt:0}})
+db.product.find({price:{$gte:0}})

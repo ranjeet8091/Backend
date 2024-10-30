@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+</head>
+<body>
+    <% if (Roll == "admin") { %>
+        <h1>Admin page</h1>
+        <ul>
+            <% arr.forEach((element)=>{ %>
+                <img src="<%=element.image%>">
+                <h2><%=element.Title%></h2>
+                <h3><%=element.Article%></h3>
+                <h1><a href="http://localhost:3000/showaddform">Post add</a></h1>
+            </div>
+            <%})%>
+        </ul>
+
+    <% } %>
+     <% if(Roll=="author") { %>
+        <h1>Author Page</h1>
+        <ul>
+            <% arr.forEach((element) => { %>
+                <% if (element.Author === Roll) { %>
+                    <li>
+                        <img src="<%= element.image %>" style="max-width: 100px; max-height: 100px;">
+                        <h2><%= element.Title %></h2>
+                        <h3><%= element.Article %></h3>
+
+                    </li>
+                <% } %>
+            <% }); %>
+        </ul>
+        <a href="http://localhost:3000/showaddform">Add Post</a>
+    <% } %>
+
+</body>
+</html>

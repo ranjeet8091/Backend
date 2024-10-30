@@ -1,0 +1,58 @@
+Create a app by (npm init)
+after that (npm install node)
+
+(USER DEFINE MODULE)
+for export used the (module.exports=variable_name)
+and import with in a variable with require
+
+
+/////////////FS/////////////////////
+The Node.js file system module allows us to work with the file system on our computer.
+To include the File System module, use the require() method.
+--  var fs = require('fs');  --
+1) The fs.readFile() method is used to read files on your computer.
+2) The fs.appendFile() method appends specified content to a file. 
+If the file does not exist,the file will be created:
+
+var fs = require('fs');
+fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+});
+3)The fs.open() method takes a "flag" as the second argument,
+ if the flag is "w" for "writing", the specified file is opened for writing.
+  If the file does not exist, an empty file is created:
+  
+  var fs = require('fs');
+fs.open('mynewfile2.txt', 'w', function (err, file) {
+  if (err) throw err;
+  console.log('Saved!');
+});
+
+4)The fs.writeFile() method replaces the specified file and content if it exists. 
+If the file does not exist, a new file, containing the specified content, will be created:
+
+var fs = require('fs');
+fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+});
+5)To delete a file with the File System module,  use the fs.unlink() method.
+The fs.unlink() method deletes the specified file:
+
+var fs = require('fs');
+fs.unlink('mynewfile2.txt', function (err) {
+  if (err) throw err;
+  console.log('File deleted!');
+});
+
+6)To rename a file with the File System module,  use the fs.rename() method.
+The fs.rename() method renames the specified file:
+var fs = require('fs');
+fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+  if (err) throw err;
+  console.log('File Renamed!');
+});
+
+
+

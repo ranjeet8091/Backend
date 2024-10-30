@@ -1,0 +1,7 @@
+/////////////////////////PATH///////////////////////////////////////////////
+What is the primary purpose of the path module in Node.js?
+ans. Manipulate file paths
+The Path module provides a way of working with directories and file paths.
+
+The syntax for including the Path module in your application:
+var path = require('path');

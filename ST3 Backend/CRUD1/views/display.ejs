@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <h1>User Detaials</h1>
+        <% arr.forEach((element)=> { %>
+          <h2><%=element.name%></h2>
+          <h2><%=element.fathern%></h2>
+          <img src="<%= element.img %>" alt="Image not found" style="max-width: 100px; max-height: 100px;">
+          <form action="/deletePost" method="post">
+            <input type="hidden" name="postId" value="<%= element._id %>">
+            <button type="submit">Delete Post</button>
+          </form>
+            <form action="/update" method="post">
+              <input type="hidden" name="postId" value="<%= element._id %>">
+              <button type="submit">update</button>
+              </form>
+        
+          
+        <% }); %>      
+</body>
+</html>

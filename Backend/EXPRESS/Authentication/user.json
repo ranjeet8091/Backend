@@ -1,0 +1,11 @@
+[{
+    "email":"abc",
+    "pass":"abc",
+    "role":"admin"
+},
+{
+    "email":"abcd",
+    "pass":"abcd",
+    "role":"user"
+}
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "productName": "Iphone",
+        "price": "11530",
+        "description": "The latest version of the phone",
+        "img": ""
+    },
+    {
+        "productName": "Samsung Galaxy",
+        "price": "9999",
+        "description": "High-performance Android phone",
+        "img": ""
+    }
+]
